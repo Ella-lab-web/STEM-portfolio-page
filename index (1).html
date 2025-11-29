@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xin Zhao - STEM Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --accent-color: #3b82f6;
+    --text-dark: #0f172a;
+    --text-light: #64748b;
+    --bg-light: #f0f9ff;
+    --white: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 2rem;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+       /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item h3 {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            font-weight: bold;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .timeline-item p {
+            color: var(--text-dark);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 3px solid var(--white);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .project-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-card .tag {
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+        }
+
+        .project-card .link-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 1rem;
+            align-self: flex-start;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-card .link-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .skill-item {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        /* Contact Form */
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            nav h1 {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item::before {
+                left: -7px;
+                width: 14px;
+                height: 14px;
+            }
+
+            .timeline::before {
+                width: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <h1>Xin Zhao</h1>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="container">
+            <h2>Hello, I'm Xin Zhao</h2>
+            <p class="subtitle">A STEM Endorsement Pathway</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">3.99</span>
+                    <span class="stat-label">GPA</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3+</span>
+                    <span class="stat-label">Years of Research</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>A brief overview of my journey in STEM.</p>
+            </div>
+            <p>My love for STEM started with curiosity for knowledge. My pursuit of environmental sustainability started with birdwatching. My passion for biotechnology began with serving others who have hearing loss like me, and continues to grow.</p>
+            <p>Thanks to others around me, I have had the chance to devote myself to STEM through various ways: clubs, projects, internships, and service, as well as just for fun in my free time. My aspirations have led me through a half-lifetime-long journey and will continue to lead me in college. I hope my experiences can be inspiring or helpful to others.</p>
+        </div>
+    </section>
+
+    <section id="academics">
+        <div class="container">
+            <div class="section-header">
+                <h2>Academics</h2>
+                <p>My coursework and academic achievements.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="date">2023 - 2025</span>
+                    <h3>Forest Ridge School of the Sacred Heart</h3>
+                    <p><strong>GPA:</strong> 3.99</p>
+                    <p><strong>Relevant Coursework:</strong> Highest-level science courses: 4 Biology II courses, 3 Chemistry II courses, Calculus II course. Others: Technology courses, Science electives.</p>
+                    <p><strong>Awards:</strong> Math Award, 2nd Place in 67th & 68th Annual Washington State Science and Engineering Fair 2024 & 2025, School Recognition Award of College Board</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">2024</span>
+                    <h3>Smith Precollege Program</h3>
+                    <p><strong>Program Name:</strong> Novel Bacteriophage Discovery</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <p>Showcasing my research endeavors.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Project 1: Insights into the Effects of Salinization on Tardigrades</h3>
+                    <p>Investigated the effects of different concentrations of saline solution on tardigrades, a species of microanimal. Later entered the Washington State Science Fair and won 2nd Place.</p>
+                    <div class="tags">
+                        <span class="tag">#Environmental Science</span>
+                        <span class="tag">#Biology</span>
+                    </div>
+                    <a href="https://frssh-my.sharepoint.com/:w:/r/personal/xzhao_forestridge_org1/Documents/research%20paper_1709625202%20(2).docx?d=w348475569e954b838bcda66a0f10d4ce&csf=1&web=1&e=ZPgqQt" class="link-button">Learn More</a>
+                </div>
+                <div class="project-card">
+                    <h3>Project 2: The Gendered Impact of Implicit Linguistic Bias on Women's Competitiveness</h3>
+                    <p>Evaluated the relationship between implicit language-based biases and competitive behavior in academic and professional settings by surveying over 100 participants. Later entered the Washington State Science Fair and won 2nd Place.</p>
+                    <div class="tags">
+                        <span class="tag">#Social Science</span>
+                        <span class="tag">#Psychology</span>
+                    </div>
+                    <a href="https://frssh-my.sharepoint.com/:w:/r/personal/xzhao_forestridge_org1/Documents/Desktop/Research%20WWSEF.docx?d=wb5af9ca375004aebbf84ebf347eaab9e&csf=1&web=1&e=KzvhSQ" class="link-button">Learn More</a>
+                </div>
+                <div class="project-card">
+                    <h3>Project 3: Bird-Safe Window Initiative</h3>
+                    <p>Founded an Animal Club to engage my school community in making school building windows safer for birds. Created stickers to place on the windows so that birds won't crash against them due to reflections and transparency. Ultimately donated additional stickers to Seattle Humane, a local NGO.</p>
+                    <div class="tags">
+                        <span class="tag">#Community Service</span>
+                        <span class="tag">#Ecological Conservation</span>
+                    </div>
+                    <a href="https://www.canva.com/design/DAF_Rn6Prz0/rGza4GbA1ahv0DzohNU1Xg/edit?utm_content=DAF_Rn6Prz0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="link-button">Learn More</a>
+                </div>
+                <div class="project-card">
+                    <h3>Project 4: AI + Wings</h3>
+                    <p>Proposed an intelligent navigation system that guides migratory birds safely across cities during the migration season. Later entered the GWC Challenge of Girls Who Code.</p>
+                    <div class="tags">
+                        <span class="tag">#Technology</span>
+                        <span class="tag">#Ecological Conservation</span>
+                    </div>
+                    <a href="https://frssh-my.sharepoint.com/:p:/r/personal/xzhao_forestridge_org1/Documents/AI+Wings-1.0.pptx?d=wdca9fc1a46f24c03963e7a4a20f93050&csf=1&web=1&e=4OBDMX" class="link-button">Learn More</a>
+                </div>
+                <div class="project-card">
+                    <h3>Project 5: AI + Game Design</h3>
+                    <p>Designing a role-playing game (RPG) with AI tools like Claude Sonnet.</p>
+                    <div class="tags">
+                        <span class="tag">#Technology</span>
+                        <span class="tag">#Code</span>
+                    </div>
+                    <a href="coming_soon.html" class="link-button">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience</h2>
+                <p>Internships, research positions, and leadership roles.</p>
+           </div>
+           <div class="timeline">
+                <div class="timeline-item">
+                    <span class="date">  2021 - 2023</span>
+                    <h3>Volunteer at Duke Kunshan University Biodiversity and Sustainability Lab</h3>
+                    <p>Collected bird collision data at my monitoring site and uploaded 360 records across 5 migration seasons to support bird conservation (Grades 7-9); Trained 2 volunteers; Received Outstanding Volunteer Award '22–'23.</p>
+           </div>
+                <div class="timeline-item">
+                    <span class="date">  2024</span>
+                    <h3>Summer Research Program at Smith College</h3>
+                    <p>Collected and isolated bacterial samples, performed DNA analysis; Discovered and named new bacteriophages, adding them to the research database for future antibacterial therapy development.</p>     
+           </div>
+                <div class="timeline-item">
+                    <span class="date">  2024</span>
+                    <h3>Girls Who Code Virtual Summer Program</h3>           
+           </div>
+                <div class="timeline-item">
+                    <span class="date">  2024 - 2025</span>
+                    <h3>Research Internship at Beijing Forestry University</h3>
+                    <p>Conducted systematic ecological surveys of tidal flats through sample collection, species classification, and data analysis; Analyzed the current status of waterbird food webs and compiled findings in a research paper.</p>        
+           </div>
+                <div class="timeline-item">
+                    <span class="date">  2023 - 2025</span>
+                    <h3>Animal Club Leader, STEM Student Group Leader, and STEM Club Leader (sequenced by founding date) at Forest Ridge School of the Sacred Heart</h3>
+                    <p>Plan engaging STEM-related activities for club members, including coding workshops, volunteering opportunities, hands-on experiments, etc.; Host guest speaker events; Host the STEM Fair at FRS; Lead a chapter of Women in STEM.</p>
+           </div>
+                <div class="timeline-item">
+                    <span class="date">  2023 - 2025</span>
+                    <p>Tutor younger students in STEM subjects and Attend after-school Robotics Club at Forest Ridge School of the Sacred Heart; Volunteer at environmental conservation and animal welfare NGOs (35+ hours annually).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="contact">
+    <div class="container">
+        <div class="section-header">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out!</p>
+        </div>
+        <form class="contact-form" id="contactForm">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            
+            <p style="text-align: center; margin: 1rem 0; color: var(--text-light);">
+                Or email me directly at: <a href="mailto:ella2008x@163.com" style="color: var(--primary-color); font-weight: bold;">ella2008x@163.com</a>
+            </p>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+    
+    var mailtoLink = 'mailto:ella2008x@163.com?subject=Portfolio Contact from ' + encodeURIComponent(name) + '&body=From: ' + encodeURIComponent(name) + '%0D%0AEmail: ' + encodeURIComponent(email) + '%0D%0A%0D%0AMessage:%0D%0A' + encodeURIComponent(message);
+    
+    window.location.href = mailtoLink;
+});
+</script>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Xin Zhao. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
